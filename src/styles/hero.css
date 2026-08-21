@@ -1,0 +1,348 @@
+/* ============================================
+   Hero 全屏首页 — 视频背景
+   ============================================ */
+
+.hero {
+  position: relative;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  overflow: hidden;
+  background: transparent; /* 视频铺满 Hero，此层透出 Grainient 作视频加载前的底色 */
+}
+
+/* === 视频背景层 === */
+.hero__video {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  overflow: hidden;
+}
+
+.hero__video-el {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  /* 压暗 + 降饱和，让暖色视频融入暗色主题而不刺眼 */
+  filter: brightness(0.62) saturate(0.82) contrast(1.05);
+}
+
+/* 调色层 — 双重作用：压暗亮部 + 注入主题的冷紫调 */
+.hero__video-tint {
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(105deg,
+      rgba(6, 6, 8, 0.72) 0%,
+      rgba(6, 6, 8, 0.42) 38%,
+      rgba(20, 4, 8, 0.32) 65%,
+      rgba(6, 6, 8, 0.62) 100%),
+    radial-gradient(ellipse 90% 70% at 30% 45%, transparent 20%, rgba(6, 6, 8, 0.42) 100%);
+}
+
+/* 网格叠加 — 极淡，在视频之上 */
+.hero__bg-grid {
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  pointer-events: none;
+  background-image:
+    linear-gradient(rgba(200, 16, 46, 0.04) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(200, 16, 46, 0.04) 1px, transparent 1px);
+  background-size: 60px 60px;
+  mask-image: radial-gradient(ellipse 80% 60% at 50% 40%, #000 20%, transparent 75%);
+  -webkit-mask-image: radial-gradient(ellipse 80% 60% at 50% 40%, #000 20%, transparent 75%);
+}
+
+/* 噪点纹理 */
+.hero__bg-noise {
+  position: absolute;
+  inset: 0;
+  z-index: 3;
+  pointer-events: none;
+  opacity: 0.03;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='3'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+
+/* 渐变暗角 — 收束边缘，保证文字可读 */
+.hero__bg-vignette {
+  position: absolute;
+  inset: 0;
+  z-index: 4;
+  pointer-events: none;
+  background:
+    radial-gradient(ellipse 75% 85% at 50% 50%, transparent 25%, rgba(6, 6, 8, 0.5) 68%, var(--bg-base) 100%),
+    linear-gradient(to bottom, rgba(6, 6, 8, 0.4) 0%, transparent 22%, transparent 78%, rgba(6, 6, 8, 0.6) 100%);
+}
+
+/* === 内容层 === */
+.hero__content {
+  position: relative;
+  z-index: 5;
+  padding-top: 120px;
+  padding-bottom: 100px;
+}
+
+/* 徽章 — 更克制，参考图小标签风格 */
+.hero__badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 6px 16px;
+  border-radius: 100px;
+  border: 1px solid var(--border-subtle);
+  background: rgba(255, 255, 255, 0.03);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  font-family: var(--font-display);
+  font-size: 12px;
+  font-weight: 500;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  margin-bottom: 40px;
+}
+
+.hero__badge-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--teal);
+  box-shadow: 0 0 10px rgba(217, 69, 92, 0.5);
+  animation: pulse 2.4s ease-in-out infinite;
+}
+
+/* 大标题 — 参考图 INDEX 字体风格：超大、粗体、紧凑字间距 */
+.hero__title {
+  font-family: var(--font-display);
+  font-size: clamp(52px, 8.5vw, 120px);
+  font-weight: 700;
+  line-height: 0.98;
+  letter-spacing: -0.04em;
+  margin-bottom: 36px;
+  max-width: 1200px;
+  text-shadow: 0 4px 60px rgba(6, 6, 8, 0.7);
+}
+
+/* 逐行遮罩 — 每行独立 overflow hidden，行内容位移进场 */
+.hero__title-line {
+  display: block;
+  overflow: hidden;
+  padding: 0.05em 0;
+  margin: -0.05em 0;
+}
+
+.hero__title-line-inner {
+  display: inline-block;
+  transform-origin: 0 100%;
+  will-change: transform;
+}
+
+.hero__title-accent {
+  display: inline;
+  background: var(--gradient-accent);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* 副标题 — 更细、更克制，与大标题形成强烈对比 */
+.hero__subtitle {
+  font-family: var(--font-body);
+  font-size: clamp(15px, 1.2vw, 18px);
+  font-weight: 400;
+  color: var(--text-secondary);
+  margin-bottom: 52px;
+  max-width: 520px;
+  line-height: 1.7;
+  letter-spacing: 0.01em;
+}
+
+/* CTA 按钮 — 参考图简洁风格 */
+.hero__actions {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.hero__btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 14px 30px;
+  font-family: var(--font-display);
+  font-size: 13px;
+  font-weight: 500;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  border-radius: var(--radius-sm);
+  border: none;
+  cursor: pointer;
+  transition: all 0.35s var(--ease);
+}
+
+.hero__btn--primary {
+  background: var(--gradient-accent);
+  color: #fff;
+  box-shadow: 0 8px 32px rgba(200, 16, 46, 0.3);
+}
+
+.hero__btn--primary:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 12px 40px rgba(200, 16, 46, 0.45);
+}
+
+.hero__btn--primary svg {
+  transition: transform 0.35s var(--ease);
+}
+
+.hero__btn--primary:hover svg {
+  transform: translateX(4px);
+}
+
+.hero__btn--ghost {
+  background: transparent;
+  color: var(--text-primary);
+  border: 1px solid var(--border-default);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+}
+
+.hero__btn--ghost:hover {
+  border-color: var(--accent-light);
+  background: rgba(200, 16, 46, 0.08);
+}
+
+/* === 滚动提示 === */
+.hero__scroll-hint {
+  position: absolute;
+  bottom: 40px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  z-index: 5;
+}
+
+.hero__scroll-hint span {
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--text-dim);
+}
+
+.hero__scroll-line {
+  width: 1px;
+  height: 40px;
+  background: linear-gradient(to bottom, var(--text-dim), transparent);
+  position: relative;
+  overflow: hidden;
+}
+
+.hero__scroll-line::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 50%;
+  background: var(--accent-light);
+  animation: scroll-hint 1.8s ease-in-out infinite;
+}
+
+/* === 开场幕布 === */
+/* 默认 display:none，由 GSAP 接管显示；无 JS 时永不出现 */
+.hero__curtain {
+  position: fixed;
+  inset: 0;
+  display: none;
+  pointer-events: none;
+  will-change: transform;
+}
+
+.hero__curtain--front {
+  z-index: 301;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background: #000;
+}
+
+.hero__curtain--back {
+  z-index: 300;
+  background: linear-gradient(165deg, #C8102E 0%, #8d0a20 55%, #3d0410 100%);
+}
+
+.hero__curtain-wordmark {
+  display: inline-flex;
+  align-items: center;
+  gap: 14px;
+  font-size: 13px;
+  font-weight: 500;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.82);
+}
+
+.hero__curtain-dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: var(--accent-light);
+  box-shadow: 0 0 12px rgba(232, 64, 42, 0.8);
+  animation: pulse 2.4s ease-in-out infinite;
+}
+
+/* Loading 计数器 — 等宽数字 + 补零三位 */
+.hero__curtain-counter {
+  display: flex;
+  align-items: baseline;
+  gap: 8px;
+  margin-top: 32px;
+  font-size: clamp(64px, 9vw, 128px);
+  font-weight: 700;
+  line-height: 1;
+  letter-spacing: -0.02em;
+  color: rgba(255, 255, 255, 0.94);
+  font-variant-numeric: tabular-nums;
+}
+
+.hero__curtain-counter-pct {
+  font-size: 0.3em;
+  font-weight: 500;
+  letter-spacing: 0.04em;
+  color: var(--accent-light);
+}
+
+/* 底部全宽进度线 */
+.hero__curtain-progress {
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  height: 2px;
+  background: linear-gradient(90deg, var(--accent) 0%, var(--accent-light) 100%);
+  transform-origin: 0 50%;
+  transform: scaleX(0);
+  will-change: transform;
+}
+
+/* === 响应式 === */
+@media (max-width: 640px) {
+  .hero__actions {
+    flex-direction: column;
+    align-items: stretch;
+    width: 100%;
+  }
+  .hero__btn {
+    justify-content: center;
+  }
+  .hero__title {
+    font-size: clamp(38px, 11vw, 56px);
+  }
+}

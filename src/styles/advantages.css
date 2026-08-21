@@ -1,0 +1,143 @@
+/* ============================================
+   Advantages 个人优势模块
+   ============================================ */
+
+.advantages {
+  padding: 140px 0;
+  background: transparent; /* 透出全站 Grainient 动态背景 */
+  position: relative;
+}
+
+.advantages__header {
+  margin-bottom: 64px;
+  max-width: 640px;
+}
+
+.advantages__grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 24px;
+}
+
+/* 能力卡片 */
+.advantage-card {
+  position: relative;
+  padding: 40px 36px;
+  background: var(--bg-card);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-xl);
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  /* translate 独立于 GSAP 的 transform 进场，hover 不冲突 */
+  transition: border-color 0.4s var(--ease), background 0.4s var(--ease), translate 0.45s var(--ease);
+  overflow: hidden;
+}
+
+.advantage-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--accent), transparent);
+  opacity: 0;
+  transition: opacity 0.4s var(--ease);
+}
+
+.advantage-card:hover {
+  border-color: var(--border-hover);
+  background: var(--bg-elevated);
+  translate: 0 -4px;
+}
+
+.advantage-card:hover::before {
+  opacity: 1;
+}
+
+/* 图标 */
+.advantage-card__icon {
+  width: 52px;
+  height: 52px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: var(--radius-md);
+  background: var(--accent-dim);
+  color: var(--accent-light);
+  border: 1px solid rgba(200, 16, 46, 0.2);
+}
+
+/* 标题组 */
+.advantage-card__title-group {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.advantage-card__title {
+  font-size: 22px;
+  font-weight: 700;
+  color: var(--text-primary);
+  letter-spacing: -0.01em;
+}
+
+.advantage-card__subtitle {
+  font-size: 12px;
+  font-weight: 500;
+  letter-spacing: 0.08em;
+  color: var(--text-dim);
+  text-transform: uppercase;
+}
+
+/* 描述 */
+.advantage-card__desc {
+  font-size: 15px;
+  line-height: 1.7;
+  color: var(--text-secondary);
+}
+
+/* 技能标签 */
+.advantage-card__skills {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: auto;
+  padding-top: 8px;
+}
+
+.advantage-card__skill {
+  display: inline-flex;
+  align-items: center;
+  padding: 6px 14px;
+  font-size: 12px;
+  font-weight: 500;
+  color: var(--text-secondary);
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid var(--border-subtle);
+  border-radius: 100px;
+  transition: all 0.3s var(--ease);
+}
+
+.advantage-card:hover .advantage-card__skill {
+  border-color: var(--border-default);
+}
+
+/* 装饰角标 */
+.advantage-card__index {
+  position: absolute;
+  top: 28px;
+  right: 32px;
+  font-family: var(--font-display);
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--text-dim);
+  letter-spacing: 0.05em;
+}
+
+@media (max-width: 900px) {
+  .advantages__grid {
+    grid-template-columns: 1fr;
+  }
+}

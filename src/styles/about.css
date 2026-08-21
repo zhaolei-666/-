@@ -1,0 +1,310 @@
+/* ============================================
+   About 个人经历模块
+   ============================================ */
+
+.about {
+  padding: 140px 0;
+  background: transparent; /* 透出全站 Grainient 动态背景 */
+  position: relative;
+}
+
+.about__container {
+  display: flex;
+  flex-direction: column;
+  gap: 100px;
+}
+
+/* === 顶部区域 === */
+.about__top {
+  display: grid;
+  grid-template-columns: 360px 1fr;
+  gap: 80px;
+  align-items: start;
+}
+
+/* 人物图 */
+.about__portrait {
+  position: sticky;
+  top: 120px;
+}
+
+.about__portrait-frame {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 3 / 4;
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  background: var(--bg-elevated);
+  border: 1px solid var(--border-default);
+  /* translate 独立于 GSAP 的 transform，hover 不冲突 */
+  transition: translate 0.7s var(--ease), box-shadow 0.7s var(--ease), border-color 0.4s var(--ease);
+  will-change: clip-path;
+}
+
+.about__portrait-frame:hover {
+  translate: 0 -4px;
+  box-shadow: 0 24px 60px rgba(0, 0, 0, 0.45);
+}
+
+.about__portrait-img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center 15%;
+  will-change: transform; /* GSAP 视差 + 缩放接管 */
+}
+
+.about__portrait-placeholder {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+  color: var(--text-dim);
+  background:
+    radial-gradient(circle at 50% 40%, rgba(200, 16, 46, 0.06) 0%, transparent 60%),
+    var(--bg-elevated);
+}
+
+.about__portrait-placeholder span {
+  font-size: 13px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+.about__portrait-glow {
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle at 50% 100%, rgba(200, 16, 46, 0.15) 0%, transparent 50%);
+  pointer-events: none;
+}
+
+.about__portrait-tag {
+  margin-top: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.about__portrait-name {
+  font-family: var(--font-display);
+  font-size: 22px;
+  font-weight: 700;
+  color: var(--text-primary);
+}
+
+.about__portrait-role {
+  font-size: 14px;
+  color: var(--accent-light);
+}
+
+/* 个人介绍 */
+.about__intro {
+  display: flex;
+  flex-direction: column;
+}
+
+.about__contacts {
+  margin-top: 40px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.about__contact-item {
+  display: inline-flex;
+  align-items: center;
+  gap: 14px;
+  padding: 14px 20px;
+  font-size: 15px;
+  color: var(--text-secondary);
+  background: var(--bg-card);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-md);
+  /* translate/color 独立过渡，不干扰 GSAP 的 transform 进场 */
+  transition: border-color 0.3s var(--ease), color 0.3s var(--ease), translate 0.35s var(--ease);
+}
+
+.about__contact-item:hover {
+  border-color: var(--border-hover);
+  color: var(--text-primary);
+  translate: 4px 0;
+}
+
+.about__contact-item svg {
+  color: var(--accent-light);
+  flex-shrink: 0;
+}
+
+/* === 数据统计 === */
+.about__stats {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 24px;
+}
+
+.about__stat-card {
+  padding: 36px 32px;
+  background: var(--bg-card);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-lg);
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  transition: border-color 0.3s var(--ease), background 0.3s var(--ease), translate 0.35s var(--ease);
+}
+
+.about__stat-card:hover {
+  border-color: var(--border-hover);
+  background: var(--bg-elevated);
+  translate: 0 -4px;
+}
+
+.about__stat-value {
+  font-family: var(--font-display);
+  font-size: 48px;
+  font-weight: 800;
+  line-height: 1;
+  color: var(--text-primary);
+  letter-spacing: -0.02em;
+}
+
+.about__stat-suffix {
+  font-size: 20px;
+  font-weight: 600;
+  color: var(--accent-light);
+  margin-left: 4px;
+}
+
+.about__stat-label {
+  font-size: 14px;
+  color: var(--text-muted);
+}
+
+/* === 工作经历 === */
+.about__experience {
+  display: flex;
+  flex-direction: column;
+}
+
+.about__timeline {
+  display: flex;
+  flex-direction: column;
+}
+
+.about__timeline-item {
+  display: grid;
+  grid-template-columns: 40px 1fr;
+  gap: 32px;
+}
+
+.about__timeline-marker {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-top: 4px;
+}
+
+.about__timeline-dot {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background: var(--accent);
+  box-shadow: 0 0 12px var(--accent-glow);
+  flex-shrink: 0;
+}
+
+.about__timeline-line {
+  width: 1px;
+  flex: 1;
+  background: linear-gradient(to bottom, var(--border-default), transparent);
+  margin-top: 8px;
+}
+
+.about__timeline-content {
+  padding-bottom: 48px;
+}
+
+.about__timeline-header {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 24px;
+  margin-bottom: 8px;
+}
+
+.about__timeline-company {
+  font-family: var(--font-display);
+  font-size: 22px;
+  font-weight: 700;
+  color: var(--text-primary);
+}
+
+.about__timeline-period {
+  font-size: 14px;
+  color: var(--text-muted);
+  font-family: var(--font-display);
+  white-space: nowrap;
+}
+
+.about__timeline-role {
+  font-size: 15px;
+  color: var(--accent-light);
+  margin-bottom: 20px;
+}
+
+.about__timeline-list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.about__timeline-list li {
+  position: relative;
+  padding-left: 20px;
+  font-size: 15px;
+  line-height: 1.7;
+  color: var(--text-secondary);
+}
+
+.about__timeline-list li::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 10px;
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--text-dim);
+}
+
+/* 响应式 */
+@media (max-width: 1024px) {
+  .about__top {
+    grid-template-columns: 1fr;
+    gap: 48px;
+  }
+  .about__portrait {
+    position: relative;
+    top: 0;
+    max-width: 320px;
+  }
+  .about__stats {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 768px) {
+  .about__stats {
+    grid-template-columns: 1fr;
+  }
+  .about__timeline-header {
+    flex-direction: column;
+    gap: 4px;
+  }
+}
