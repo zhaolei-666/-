@@ -8,7 +8,7 @@ export const personalInfo = {
   age: 22,
   email: '18212052419@163.com',
   phone: '18212052419',
-  website: 'https://zhangsan.dev',
+  website: 'https://gerenzhao.pages.dev',
   location: '深圳',
   bio: '专注于 AI 视觉生成与 Prompt 工程的年轻设计师。擅长将模糊业务需求转化为精准的 AI 生成方案，在电商生图、AI 网页设计、AI 漫剧等场景有实战落地经验，善于用数据驱动迭代，以量化思维持续优化输出效果。',
   bioShort: '用 Prompt 重新定义视觉生产的边界',
