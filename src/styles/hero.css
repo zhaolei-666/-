@@ -130,8 +130,8 @@
 .hero__title-line {
   display: block;
   overflow: hidden;
-  padding: 0.05em 0;
-  margin: -0.05em 0;
+  padding: 0.15em 0;
+  margin: -0.15em 0;
 }
 
 .hero__title-line-inner {

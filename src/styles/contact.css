@@ -250,3 +250,42 @@
     align-items: flex-start;
   }
 }
+
+/* === FDE 联系动作 === */
+.contact__actions {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 16px;
+  margin-bottom: 64px;
+}
+
+.contact__actions .contact__email-btn {
+  margin-bottom: 0;
+}
+
+.contact__email-btn--resume {
+  color: var(--text-primary);
+  background: rgba(255, 255, 255, 0.035);
+  border: 1px solid var(--border-default);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+}
+
+.contact__email-btn--resume:hover {
+  background: var(--bg-elevated);
+  border-color: var(--accent-light);
+  box-shadow: 0 0 30px rgba(200, 16, 46, 0.18);
+}
+
+@media (max-width: 640px) {
+  .contact__actions {
+    width: 100%;
+    flex-direction: column;
+    align-items: stretch;
+  }
+  .contact__actions .contact__email-btn {
+    justify-content: space-between;
+    width: 100%;
+  }
+}

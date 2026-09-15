@@ -1,5 +1,5 @@
 import { useLayoutEffect, useRef } from 'react'
-import { personalInfo, stats, workExperience } from '../data/portfolio'
+import { personalInfo, stats, workExperience, education } from '../data/portfolio'
 import { gsap, sectionHeaderReveal, staggerReveal, imageReveal, parallax } from '../anim/motion'
 
 export default function About() {
@@ -72,8 +72,8 @@ export default function About() {
           <div className="about__intro">
             <span className="section-label">About</span>
             <h2 className="section-title">
-              把模糊需求，<br />
-              变成<span className="text-gradient">精准的 AI 输出</span>
+              从业务现场，<br />
+              推进到<span className="text-gradient">可运行交付</span>
             </h2>
             <p className="section-description">{personalInfo.bio}</p>
 
@@ -92,12 +92,12 @@ export default function About() {
                 </svg>
                 <span>{personalInfo.phone}</span>
               </a>
-              <a href={personalInfo.website} target="_blank" rel="noreferrer" className="about__contact-item">
+              <a href={personalInfo.resumeUrl} className="about__contact-item" download>
                 <svg width="18" height="18" viewBox="0 0 24 24" fill="none">
                   <circle cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="1.5" />
                   <path d="M2 12h20M12 2a15 15 0 010 20M12 2a15 15 0 000 20" stroke="currentColor" strokeWidth="1.5" />
                 </svg>
-                <span>{personalInfo.website}</span>
+                <span>下载简历 PDF</span>
               </a>
             </div>
           </div>
@@ -135,6 +135,31 @@ export default function About() {
                   <ul className="about__timeline-list">
                     {exp.highlights.map((h, i) => (
                       <li key={i}>{h}</li>
+                    ))}
+                  </ul>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+        {/* 教育经历 */}
+        <div className="about__experience">
+          <span className="section-label">Education</span>
+          <div className="about__timeline">
+            {education.map((item) => (
+              <div key={item.organization} className="about__timeline-item">
+                <div className="about__timeline-marker">
+                  <span className="about__timeline-dot" />
+                </div>
+                <div className="about__timeline-content">
+                  <div className="about__timeline-header">
+                    <h3 className="about__timeline-company">{item.organization}</h3>
+                    <span className="about__timeline-period">{item.period}</span>
+                  </div>
+                  <p className="about__timeline-role">{item.role}</p>
+                  <ul className="about__timeline-list">
+                    {item.highlights.map((highlight, index) => (
+                      <li key={index}>{highlight}</li>
                     ))}
                   </ul>
                 </div>

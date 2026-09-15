@@ -48,40 +48,40 @@ export default function Hero() {
         {/* 徽章 */}
         <div className="hero__badge">
           <span className="hero__badge-dot" />
-          <span>AI Visual Designer · Shanghai</span>
+          <span>FDE Candidate · AI Deployment</span>
         </div>
 
         {/* 大标题 — 逐行遮罩进场 */}
         <h1 className="hero__title font-display">
           <span className="hero__title-line">
-            <span className="hero__title-line-inner">用 Prompt 重新定义</span>
+            <span className="hero__title-line-inner">把业务问题</span>
           </span>
           <span className="hero__title-line">
             <span className="hero__title-line-inner">
-              <span className="hero__title-accent">视觉生产</span>
+              <span className="hero__title-accent">部署成</span>
             </span>
           </span>
           <span className="hero__title-line">
-            <span className="hero__title-line-inner">的边界</span>
+            <span className="hero__title-line-inner">可运行的 AI 方案</span>
           </span>
         </h1>
 
         {/* 副标题 */}
         <p className="hero__subtitle">
-          {personalInfo.title} · 专注 AI 生图、Prompt 工程与自动化工作流搭建，
-          用结构化的方法让创意规模化落地。
+          {personalInfo.title} · 从需求拆解、Prompt 调优、工作流编排到测试交付，
+          用 AI 与数据能力推进问题闭环。
         </p>
 
         {/* CTA */}
         <div className="hero__actions">
           <a href="#projects" className="hero__btn hero__btn--primary">
-            查看作品
+            查看项目
             <svg width="16" height="16" viewBox="0 0 24 24" fill="none">
               <path d="M5 12h14M13 5l7 7-7 7" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" />
             </svg>
           </a>
-          <a href="#contact" className="hero__btn hero__btn--ghost">
-            联系合作
+          <a href={personalInfo.resumeUrl} className="hero__btn hero__btn--ghost" download>
+            下载简历
           </a>
         </div>
       </div>
@@ -97,7 +97,7 @@ export default function Hero() {
       <div className="hero__curtain hero__curtain--front">
         <span className="hero__curtain-wordmark font-display">
           <span className="hero__curtain-dot" />
-          Zhao Lei — AI Visual Designer
+          Zhao Lei - FDE Candidate
         </span>
         {/* Loading 计数器 */}
         <div className="hero__curtain-counter font-display">

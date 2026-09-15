@@ -53,7 +53,7 @@ export default function Navbar() {
           <span className="navbar__logo-mark">ZL</span>
           <span className="navbar__logo-text">
             Zhao Lei
-            <span className="navbar__logo-sub">AI Visual Designer</span>
+            <span className="navbar__logo-sub">FDE Candidate</span>
           </span>
         </a>
 
@@ -74,8 +74,8 @@ export default function Navbar() {
         </ul>
 
         {/* 联系按钮 */}
-        <a href="#contact" className="navbar__cta">
-          <span>联系我</span>
+        <a href={personalInfo.resumeUrl} className="navbar__cta" download>
+          <span>下载简历</span>
           <svg width="14" height="14" viewBox="0 0 24 24" fill="none">
             <path
               d="M7 17L17 7M17 7H8M17 7V16"

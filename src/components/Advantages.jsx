@@ -54,12 +54,12 @@ export default function Advantages() {
       <div className="container">
         {/* 标题区 */}
         <div className="advantages__header">
-          <span className="section-label">Capabilities</span>
+          <span className="section-label">FDE Capabilities</span>
           <h2 className="section-title">
-            我的<span className="text-gradient">核心能力</span>
+            面向现场交付的<span className="text-gradient">核心能力</span>
           </h2>
           <p className="section-description">
-            从 Prompt 设计到工作流落地，从需求拆解到量化迭代 —— 每一环都有方法论支撑。
+            围绕需求理解、AI 方案搭建、数据处理、系统协作与项目推进，展示可迁移到一线的能力基础。
           </p>
         </div>
 

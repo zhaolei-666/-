@@ -2,6 +2,33 @@ import { useLayoutEffect, useRef } from 'react'
 import { projects } from '../data/portfolio'
 import { gsap, sectionHeaderReveal, imageReveal, parallax } from '../anim/motion'
 
+function KnowledgeFlow() {
+  const stages = ['信息采集', 'AI 整理', '本地沉淀', 'Skill 复用']
+
+  return (
+    <div className="project-card__flow">
+      <div className="project-card__flow-grid" />
+      <span className="project-card__flow-kicker">AI Knowledge Pipeline</span>
+      <div className="project-card__flow-track">
+        {stages.map((stage, index) => (
+          <div key={stage} className="project-card__flow-stage">
+            <span className="project-card__flow-index">0{index + 1}</span>
+            <span>{stage}</span>
+            {index < stages.length - 1 && <span className="project-card__flow-arrow">→</span>}
+          </div>
+        ))}
+      </div>
+      <div className="project-card__flow-models">
+        <span>Obsidian</span>
+        <span>CCSwitch</span>
+        <span>Qwen-Coder</span>
+        <span>DeepSeek</span>
+        <span>飞书 CLI</span>
+      </div>
+    </div>
+  )
+}
+
 export default function Projects() {
   const sectionRef = useRef(null)
 
@@ -9,10 +36,8 @@ export default function Projects() {
     const ctx = gsap.context(() => {
       const el = sectionRef.current
 
-      // 标题区：大标题遮罩进场
       sectionHeaderReveal(el)
 
-      // 项目卡片：错峰大幅进场 + 图片 reveal + 视差
       el.querySelectorAll('.project-card').forEach((card, i) => {
         gsap.fromTo(card,
           { autoAlpha: 0, y: 120 },
@@ -22,7 +47,6 @@ export default function Projects() {
             duration: 1.4,
             ease: 'power3.out',
             delay: i * 0.18,
-            // 结束后清除内联样式，恢复 CSS hover 位移
             clearProps: 'transform,opacity,visibility',
             scrollTrigger: { trigger: card, start: 'top 85%', once: true },
           })
@@ -41,24 +65,26 @@ export default function Projects() {
   return (
     <section id="projects" className="projects" ref={sectionRef}>
       <div className="container">
-        {/* 标题区 */}
         <div className="projects__header">
-          <span className="section-label">Selected Work</span>
+          <span className="section-label">AI Delivery Practice</span>
           <h2 className="section-title">
-            精选<span className="text-gradient">项目</span>
+            面向交付的<span className="text-gradient">AI 实践</span>
           </h2>
           <p className="section-description">
-            从电商生图到 AI 网页设计，每一个项目都是 Prompt 工程与自动化工作流的实战验证。
+            从真实场景出发，展示 AI 知识库、Agent 工作流与 Web 项目中的需求理解、方案搭建和问题排查过程。
           </p>
         </div>
 
-        {/* 项目卡片 */}
         <div className="projects__grid">
           {projects.map((project) => (
-            <article key={project.id} className="project-card">
-              {/* 图片区 */}
+            <article
+              key={project.id}
+              className={`project-card ${project.featured ? 'project-card--featured' : ''}`}
+            >
               <div className="project-card__visual">
-                {project.image ? (
+                {project.featured ? (
+                  <KnowledgeFlow />
+                ) : project.image ? (
                   <img
                     src={project.image}
                     alt={project.title}
@@ -70,18 +96,9 @@ export default function Projects() {
                   <div className="project-card__placeholder">
                     <div className="project-card__placeholder-grid" />
                     <div className="project-card__placeholder-icon">
-                      {project.category.includes('电商') ? (
-                        <svg width="48" height="48" viewBox="0 0 24 24" fill="none">
-                          <rect x="3" y="3" width="18" height="18" rx="2" stroke="currentColor" strokeWidth="1" />
-                          <circle cx="9" cy="9" r="2" stroke="currentColor" strokeWidth="1" />
-                          <path d="M21 15l-5-5L5 21" stroke="currentColor" strokeWidth="1" />
-                        </svg>
-                      ) : (
-                        <svg width="48" height="48" viewBox="0 0 24 24" fill="none">
-                          <rect x="3" y="3" width="18" height="14" rx="2" stroke="currentColor" strokeWidth="1" />
-                          <path d="M3 9h18M8 21h8" stroke="currentColor" strokeWidth="1" />
-                        </svg>
-                      )}
+                      <svg width="48" height="48" viewBox="0 0 24 24" fill="none">
+                        <path d="M12 3v18M3 12h18M6.3 6.3l11.4 11.4M17.7 6.3L6.3 17.7" stroke="currentColor" strokeWidth="1" />
+                      </svg>
                     </div>
                     <span className="project-card__placeholder-label">{project.category}</span>
                   </div>
@@ -92,22 +109,26 @@ export default function Projects() {
                 </div>
               </div>
 
-              {/* 内容区 */}
               <div className="project-card__body">
+                <span className="project-card__category">{project.category}</span>
                 <h3 className="project-card__title font-display">{project.title}</h3>
                 <p className="project-card__desc">{project.description}</p>
 
-                {/* 指标 */}
+                <ul className="project-card__details">
+                  {project.details.map((detail) => (
+                    <li key={detail}>{detail}</li>
+                  ))}
+                </ul>
+
                 <div className="project-card__metrics">
-                  {project.metrics.map((m) => (
-                    <div key={m.label} className="project-card__metric">
-                      <span className="project-card__metric-value">{m.value}</span>
-                      <span className="project-card__metric-label">{m.label}</span>
+                  {project.metrics.map((metric) => (
+                    <div key={metric.label} className="project-card__metric">
+                      <span className="project-card__metric-value">{metric.value}</span>
+                      <span className="project-card__metric-label">{metric.label}</span>
                     </div>
                   ))}
                 </div>
 
-                {/* 标签 */}
                 <div className="project-card__tags">
                   {project.tags.map((tag) => (
                     <span key={tag} className="tag">{tag}</span>

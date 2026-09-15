@@ -1,69 +1,109 @@
-// 个人作品集数据 — 来源于简历
+// FDE 求职网站内容数据 — 严格来自简历与用户确认信息
 
 export const personalInfo = {
   name: '赵磊',
   nameEn: 'Zhao Lei',
-  title: 'AI 视觉设计师',
-  titleEn: 'AI Visual Designer',
+  title: 'FDE 前沿部署工程师求职者',
+  titleEn: 'Forward Deployed Engineer Candidate',
   age: 22,
   email: '18212052419@163.com',
   phone: '18212052419',
   website: 'https://gerenzhao.pages.dev',
+  resumeUrl: '/resume/zhao-lei-fde-resume.pdf',
   location: '深圳',
-  bio: '专注于 AI 视觉生成与 Prompt 工程的年轻设计师。擅长将模糊业务需求转化为精准的 AI 生成方案，在电商生图、AI 网页设计、AI 漫剧等场景有实战落地经验，善于用数据驱动迭代，以量化思维持续优化输出效果。',
-  bioShort: '用 Prompt 重新定义视觉生产的边界',
+  bio: '2026 届大数据应用技术专业毕业生，具备大模型、Agent、RAG、Prompt 工程与 AI 工作流实操基础。熟悉 Python、SQL、Excel 数据处理及 API 接入流程，能够参与业务需求梳理、原型搭建、Prompt 调优、测试排查与交付文档编写。系统学习腾讯云 ADP 前沿部署工程师（FDE）认证课程，接受长期驻场、频繁出差与项目上线期高强度工作。',
+  bioShort: '把一线问题，推进成可运行的 AI 方案',
 }
 
 export const stats = [
-  { label: 'AI 生图项目', value: '2', suffix: '个' },
-  { label: 'Prompt 调优场景', value: '4', suffix: '类' },
-  { label: '自动化工作流', value: '3', suffix: '套' },
-  { label: '从业经验', value: '8', suffix: '月+' },
+  { label: 'AI 实践方向', value: '3', suffix: '类' },
+  { label: '企业软件协作', value: '4', suffix: '个月' },
+  { label: '可展示知识库工作流', value: '1', suffix: '套' },
+  { label: '现场交付意愿', value: '可驻场', suffix: '' },
 ]
 
 export const workExperience = [
   {
-    company: '深圳电商商业股份有限公司',
-    role: '电商运营助理 / AI视觉',
-    period: '2026.03 — 2026.06',
+    company: '广州星晨软件科技有限公司',
+    role: '大数据运维助理',
+    period: '2026.03 - 2026.06',
     highlights: [
-      '针对 AI 文本生成与电商商品生图业务痛点，批量迭代优化 Prompt 指令，精准解决模型内容错乱、画面失真、风格不统一等问题',
-      '熟练使用 Dify、Coze 两大 AI 编排平台，独立搭建多节点自动化工作流，覆盖文本提取、内容生成、AI 生图全流程',
-      '搭建 AI 输出效果评估标准，从准确度、画面适配度、合规性、完整性多维度量化模型输出质量',
-      '对接业务内容团队，挖掘 AI 漫剧、电商生图核心需求，推动 AI 业务场景落地',
+      '使用 SQL 完成数据查询、清洗、校验和批量处理，配合进行数据链路梳理与异常数据排查。',
+      '使用 Excel 完成数据透视、筛选、台账搭建和信息整理，为业务分析提供数据支持。',
+      '参与数据接入和问题排查相关工作，理解数据从业务系统到应用端的流转过程。',
+      '协助完成测试验证、问题记录和沟通反馈，积累了企业软件项目中的协作与交付意识。',
+    ],
+  },
+]
+
+export const education = [
+  {
+    organization: '深圳信息职业技术大学',
+    role: '大数据技术 · 专科',
+    period: '2023.09 - 2026.06',
+    highlights: [
+      '计算机相关专业，学习数据采集、数据处理、数据库、数据分析及软件开发等课程。',
+      '系统学习腾讯云 ADP 前沿部署工程师（FDE）认证课程，覆盖 AI 与 Agent 基础、ADP 产品能力、智能体开发、评测与调优。',
     ],
   },
 ]
 
 export const projects = [
   {
-    id: 'ecommerce-ai',
-    title: '电商生图 Prompt 优化',
-    role: '负责人',
-    period: '2026.03 — 2026.06',
-    category: 'AI 生图 / 电商',
+    id: 'local-ai-knowledge-base',
+    title: '本地 AI 知识库与自动化工作流',
+    role: '独立开发',
+    period: '个人项目',
+    category: 'AI 知识库 / 自动化',
+    featured: true,
     description:
-      '深耕电商商品 AI 生图场景，精准调试画面构图、色彩、光影、材质、风格统一度相关 Prompt 参数，解决商品变形、细节缺失、风格杂乱等问题，产出符合电商运营标准的商品效果图。基于 Dify、Coze 平台搭建多节点自动化工作流，打通「需求输入 → Prompt 调用 → 内容/图片生成 → 初步筛选输出」全流程。',
-    tags: ['Prompt Engineering', 'Dify', 'Coze', '电商生图', '自动化工作流'],
-    image: '/images/project-ecommerce.webp',
+      '以 Obsidian 为本地知识库载体，通过 CCSwitch 接入 Qwen-Coder、DeepSeek 等模型，把资料采集、AI 整理、知识沉淀与 Skill 复用串联成可运行工作流。',
+    details: [
+      '本地优先：资料以 Markdown 存储，支持多模型 API 切换，掌握本地资料存储与数据安全管理方法。',
+      '信息采集：接入 GitHub 资讯收集工具、Clip 浏览器插件与飞书 CLI，统一导入网页、视频字幕和飞书文档。',
+      '自动化闭环：使用定时任务处理日报、周报等重复工作，并将 SOP 与方法论沉淀为可复用 Skill。',
+    ],
+    tags: ['Obsidian', 'CCSwitch', 'Qwen-Coder', 'DeepSeek', 'Clip', '飞书 CLI', '自动化任务', 'Skill'],
     metrics: [
-      { label: '生图准确率提升', value: '显著' },
-      { label: '人工重复操作', value: '替代' },
+      { label: '项目状态', value: '可展示' },
+      { label: '部署方式', value: '本地优先' },
     ],
   },
   {
-    id: 'ai-web-design',
-    title: 'AI 网页设计',
-    role: '核心开发者',
-    period: '2025.11 — 2026.01',
-    category: 'AI 网页 / 前端生成',
+    id: 'elderly-health-agent',
+    title: '健康问答与谣言甄别智能客服工作流',
+    role: '主要负责人',
+    period: '项目实践',
+    category: 'Agent / 谣言甄别',
     description:
-      '针对 UI 布局、色彩体系、前端结构、交互逻辑、响应式适配等维度，设计多维度约束式结构化 Prompt，替代传统泛化指令，大幅提升网页整体设计规范性与输出匹配度。通过参数调优、负向 Prompt 约束、示例样本引导，针对性修复 AI 生成常见缺陷。基于 Coze/Dify 搭建网页生成专属自动化工作流。',
-    tags: ['结构化 Prompt', '负向约束', 'Coze', 'Dify', '自动化流程'],
-    image: '/images/project-webdesign.webp',
+      '围绕老年人健康问题问答和健康谣言识别场景，负责需求拆解、知识内容组织、Prompt 编写及 Coze 工作流配置。',
+    details: [
+      '针对不会打字、方言识别困难、容易被营销号误导等问题，梳理交互门槛与信息可信度风险。',
+      '优化简短问答、风险提示与回答边界，通过多轮对话测试定位回答偏差、知识不足和流程异常。',
+      '完成可演示的智能客服原型，验证 AI 在健康科普、谣言甄别与低门槛交互场景中的应用思路。',
+    ],
+    tags: ['Coze', 'Agent', 'Prompt 工程', '工作流编排', '需求拆解'],
     metrics: [
-      { label: '输出准确率', value: '显著提升' },
-      { label: '调试成本', value: '大幅降低' },
+      { label: '项目角色', value: '负责人' },
+      { label: '交付形态', value: '可演示原型' },
+    ],
+  },
+  {
+    id: 'personal-website',
+    title: '个人网站开发与上线',
+    role: '独立开发',
+    period: '个人项目',
+    category: 'Web 开发 / 部署',
+    description:
+      '独立完成个人网站的内容规划、页面开发与线上部署，用于展示个人项目、技术能力和学习成果。',
+    details: [
+      '熟悉从本地开发、调试到线上部署的完整流程。',
+      '具备轻量 Web 项目交付和线上问题排查能力。',
+    ],
+    tags: ['React', 'Vite', '响应式页面', '线上部署', '问题排查'],
+    metrics: [
+      { label: '项目角色', value: '独立开发' },
+      { label: '访问地址', value: '已上线' },
     ],
   },
 ]
@@ -71,42 +111,42 @@ export const projects = [
 export const advantages = [
   {
     icon: 'prompt',
-    title: 'Prompt 工程',
-    subtitle: 'Prompt Engineering',
+    title: 'AI 应用与交付',
+    subtitle: 'AI Application & Delivery',
     description:
-      '熟练掌握文本、AI 生图双场景 Prompt 设计、迭代调优、结构化输出。擅长解决模型幻觉、输出错乱、风格不符等常见问题，具备批量优化与标准化模板沉淀能力。',
-    skills: ['角色设定', 'CoT 思维链', 'Few-shot', '结构化输出约束'],
+      '具备大模型、Agent、RAG、上下文管理与 Prompt 工程基础，能够参与 AI 工作流配置、POC 验证、现场测试和问题排查。',
+    skills: ['Agent', 'RAG', 'Prompt 调优', 'AI 工作流', 'POC 验证'],
   },
   {
     icon: 'nocode',
-    title: 'AI 无代码平台',
-    subtitle: 'No-Code AI Platform',
+    title: '数据与开发基础',
+    subtitle: 'Data & Development',
     description:
-      '熟练使用 Dify、Coze 平台，可独立完成多节点工作流搭建、调试、配置与落地上线，适配内容生成、数据提取、AI 生图等主流业务场景。',
-    skills: ['Dify', 'Coze', '多节点工作流', '自动化流程'],
+      '能够使用 Python、SQL 和 Excel 完成数据处理，理解 API 调用、JSON 数据处理以及业务数据到应用端的流转过程。',
+    skills: ['Python', 'SQL', 'Excel', 'API 调用', 'JSON'],
   },
   {
     icon: 'landing',
-    title: 'AI 应用落地',
-    subtitle: 'AI Implementation',
+    title: '平台与系统理解',
+    subtitle: 'Platform & Systems',
     description:
-      '具备 AI 漫剧、电商生图、AI 网页设计场景实战经验。掌握大模型基础参数调优逻辑，具备 AI 输出效果量化评估、数据驱动迭代的实操能力。',
-    skills: ['AI 漫剧', '电商生图', 'AI 网页设计', '量化评估'],
+      '熟悉 Coze、Codex、飞书与本地化部署环境，了解 ERP、MES 等企业系统业务流程以及数据接入、接口联调思路。',
+    skills: ['Coze', 'Codex', '飞书', '本地化部署', 'ERP / MES'],
   },
   {
     icon: 'thinking',
-    title: '业务思维',
-    subtitle: 'Business Acumen',
+    title: '项目推进与沟通',
+    subtitle: 'Delivery & Communication',
     description:
-      '具备优秀的业务需求挖掘与拆解能力，可快速将业务模糊需求转化为可落地的 AI 优化方案。逻辑清晰、擅长问题排查与迭代优化，具备极强的结果导向和量化思维。',
-    skills: ['需求拆解', '问题排查', '结果导向', '量化思维'],
+      '能够拆解需求、判断真伪需求、定义 MVP 范围并完成测试验证、用户培训和文档输出；具备较强的客户沟通与问题闭环意识。',
+    skills: ['需求拆解', 'MVP 范围', '测试验证', '用户培训', '交付文档'],
   },
 ]
 
 export const navLinks = [
   { label: '首页', href: '#hero' },
-  { label: '关于', href: '#about' },
-  { label: '作品', href: '#projects' },
+  { label: '定位', href: '#about' },
+  { label: '项目', href: '#projects' },
   { label: '能力', href: '#advantages' },
   { label: '联系', href: '#contact' },
 ]
